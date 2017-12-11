@@ -1,0 +1,37 @@
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+group 'example'
+
+sourceCompatibility = 1.8
+
+apply plugin: 'application'
+mainClassName = 'example.Main'
+
+dependencies {
+
+  compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+  compile group: 'structlog4j', name: 'structlog4j-api', version: '1.0.0'
+  compile group: 'structlog4j', name: 'structlog4j-json', version: '1.0.0'
+
+  //runtime group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+  runtime group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.10.0'
+}
+
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'org.standardout:gradle-eclipseconfig:1.1.0'
+  }
+}
+
+// for .editorconfig support in Eclipse
+apply plugin: 'org.standardout.eclipseconfig'
